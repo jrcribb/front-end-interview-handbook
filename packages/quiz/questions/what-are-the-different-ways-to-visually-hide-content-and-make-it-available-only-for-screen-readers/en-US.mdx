@@ -6,25 +6,29 @@ These techniques are related to accessibility (a11y).
 
 ## Small/zero size
 
-`width: 1px; height: 1px` and a combination of using CSS clip to make the element take up (barely any) space on the screen at all.
+`width: 1px; height: 1px` combined with CSS `clip` to make the element take up (barely) any space on the screen at all.
 
-Using `width: 0; height; 0` is not recommended because search engines might penalize this thinking it has a malicious intention, like keyword stuffing.
+> [!CAUTION] Don't use `width: 0; height: 0`
+>
+> Using `width: 0; height: 0` is not recommended because search engines might penalize this as malicious intent, such as keyword stuffing.
 
 ## Absolute positioning
 
-`position: absolute; left: -99999px` will position an element way outside of the screen. However, as per [WebAIM's article](https://webaim.org/techniques/css/invisiblecontent/):
+`position: absolute; left: -99999px` will position an element way outside the screen. However, as per [WebAIM's article](https://webaim.org/techniques/css/invisiblecontent/):
 
+> [!WARNING] Don't hide interactive elements off-screen
+>
 > Navigable elements, such as links and form controls, should not be hidden off-screen. They would still be navigable by sighted keyboard users, but would not be visible to them, unless they are styled to become visible when they receive keyboard focus.
 
-Use this only when your contents contain only text.
+Use this only when your content contains only text.
 
 ## Text indentation
 
-`text-indent: -9999px`. This only works on text within the `block` elements. Similar to the absolute positioning technique above, focusable elements given this style will still be focusable, causing confusion for sighted users who use keyboard navigation.
+`text-indent: -9999px`. This only works on text within block elements. Similar to the absolute positioning technique above, focusable elements given this style will still be focusable, causing confusion for sighted users who use keyboard navigation.
 
 ## Incorrect ways
 
-The following ways are incorrect because they hide content from the user **AND** screen readers, which is incorrect if the purpose is to expose to screen readers only.
+The following ways are incorrect because they hide content from the user **AND** screen readers, which is the wrong behavior if the purpose is to expose the content to screen readers only.
 
 - `display: none`
 - `visibility: hidden`
@@ -32,9 +36,9 @@ The following ways are incorrect because they hide content from the user **AND**
 
 ## Techniques in the wild
 
-Ideally, it is recommended to combine the above approaches to make sure it works properly in all browsers.
-
-Instead of implementing your own way to remove an element from the rendering tree and the a11y tree, you are recommended to use one of the following approaches from mature CSS frameworks, which have been battle-tested on many websites.
+> [!TIP] Use a battle-tested utility class
+>
+> Combine the approaches above to make sure it works properly in all browsers. Instead of implementing your own way to remove an element from the rendering tree and the a11y tree, use one of the following utilities from mature CSS frameworks, which have been battle-tested on many websites.
 
 ### Tailwind CSS
 

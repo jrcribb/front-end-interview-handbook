@@ -3,13 +3,13 @@ title: Have you ever worked with retina graphics?
 subtitle: If so, when and what techniques did you use?
 ---
 
-_Retina_ is just a marketing term to refer to high resolution screens with a pixel ratio bigger than 1. The key thing to know is that using a pixel ratio means these displays are emulating a lower resolution screen in order to show elements with the same size. Nowadays we consider all mobile devices _retina_ defacto displays.
+_Retina_ is a marketing term used to refer to high-resolution screens with a pixel ratio greater than 1. The key thing to know is that using a pixel ratio means these displays are emulating a lower-resolution screen in order to show elements at the same size. Nowadays, we consider all mobile devices to be retina displays by default.
 
-Browsers by default render DOM elements according to the device resolution, except for images.
+Browsers render DOM elements according to the device resolution by default, except for images.
 
-In order to have crisp, good-looking graphics that make the best of retina displays we need to use high resolution images whenever possible. However using always the highest resolution images will have an impact on performance as more bytes will need to be sent over the wire.
+To have crisp, good-looking graphics that make the best of retina displays, we need to use high-resolution images whenever possible. However, always using the highest-resolution images will impact performance, as more bytes will need to be sent over the wire.
 
-To overcome this problem, we can use responsive images, as specified in HTML5. It requires making available different resolution files of the same image to the browser and let it decide which image is best, using the html attribute `srcset` and optionally `sizes`, for instance:
+To overcome this problem, we can use responsive images, as specified in HTML5. This requires making different resolution files of the same image available to the browser and letting it decide which image is best, using the HTML attribute `srcset` and optionally `sizes`. For instance:
 
 ```html
 <div responsive-background-image>
@@ -27,6 +27,6 @@ To overcome this problem, we can use responsive images, as specified in HTML5. I
 </div>
 ```
 
-It is important to note that browsers which don't support HTML5's `srcset` (i.e. IE11) will ignore it and use `src` instead. If we really need to support IE11 and we want to provide this feature for performance reasons, we can use a JavaScript polyfill, e.g. [Picturefill](https://scottjehl.github.io/picturefill/).
+Note that browsers which don't support HTML5's `srcset` (i.e. IE11) will ignore it and use `src` instead. If we really need to support IE11 and we want to provide this feature for performance reasons, we can use a JavaScript polyfill, e.g. [Picturefill](https://scottjehl.github.io/picturefill/).
 
-For icons, to use SVGs where possible, as they render very crisply regardless of resolution.
+For icons, use SVGs where possible, as they render crisply regardless of resolution.

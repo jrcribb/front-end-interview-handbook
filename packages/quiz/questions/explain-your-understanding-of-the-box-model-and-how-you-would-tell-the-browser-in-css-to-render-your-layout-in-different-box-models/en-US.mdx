@@ -10,18 +10,20 @@ The CSS box model is responsible for calculating:
 - Whether or not borders and/or margins overlap, or collapse.
 - A box's dimensions.
 
-## Box Model Rules
+## Box model rules
 
-- The dimensions of a block element are calculated by `width`, `height`, `padding`s, and `border`s.
-- If no `height` is specified, a block element will be as high as the content it contains, plus `padding` (unless there are floats, for which, see [describe floats and how they work](/questions/quiz/describe-floats-and-how-they-work)).
-- If no `width` is specified, a non-`float`-ed block element will expand to fit the width of its parent minus the `padding`, unless it has a `max-width` property set, in which case it will be no wider than the specified maximum width.
-  - Some block-level elements (e.g. `table`, `figure`, and `input`) have inherent or default width values, and may not expand to fill the full width of their parent container.
-  - Note: `span` is an inline-level element and does not have a default width, so it will not expand to fit.
+- The dimensions of a block element are calculated by `width`, `height`, `padding`, and `border`.
+- If no `height` is specified, a block element will be as high as the content it contains, plus `padding` (unless there are floats — see [describe floats and how they work](/questions/quiz/describe-floats-and-how-they-work)).
+- If no `width` is specified, a non-floated block element will expand to fit the width of its parent minus the `padding`, unless it has a `max-width` property set, in which case it will be no wider than the specified maximum width.
+  - Some block-level elements (e.g. `table`, `figure`, and `input`) have inherent or default width values and may not expand to fill the full width of their parent container.
+  - `span` is an inline-level element and does not have a default width, so it will not expand to fit.
 - The `height` of an element is calculated by the content's `height`.
 - The `width` of an element is calculated by the content's `width`.
-- By default (`box-sizing: content-box`), `padding`s and `border`s are not part of the `width` and `height` of an element.
+- By default (`box-sizing: content-box`), `padding` and `border` are not part of the `width` and `height` of an element.
 
-Note that `margin`s are not counted towards the actual size of the box. It affects the total space that the box will take up on the page, but only the space outside the box. The box's area stops at the `border` — it does not extend into the `margin`.
+> [!NOTE] Margins are not part of the box itself
+>
+> `margin`s are not counted towards the actual size of the box. They affect the total space the box takes up on the page, but only the space outside the box. The box's area stops at the `border` — it does not extend into the `margin`.
 
 ## Extra
 
@@ -57,9 +59,9 @@ Look up the `box-sizing` property, which affects how the total heights and width
 
   The element will still take up 100px on the page, but the content area will be 70px wide (100px - 10px left padding - 10px right padding - 5px left border - 5px right border).
 
-### Border and Margin Behavior
+### Border and margin behavior
 
-- **Borders do not collapse or overlap** with those of adjacent elements. Each element’s border is rendered individually.
+- **Borders do not collapse or overlap** with those of adjacent elements. Each element's border is rendered individually.
 - **Margins can collapse**, but only vertically and only between block-level elements. Horizontal margins do not collapse. This means that if one block element has a bottom margin and the next has a top margin, only the larger of the two will be used. This behavior is independent of `box-sizing` and is the default in CSS.
 
 ## References

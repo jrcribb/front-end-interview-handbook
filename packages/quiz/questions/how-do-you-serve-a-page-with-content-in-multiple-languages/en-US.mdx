@@ -2,7 +2,9 @@
 title: How do you serve a page with content in multiple languages?
 ---
 
-> Assumption: The question is about how to serve a page with content available in multiple languages and the content within the page should be displayed only in one consistent language.
+> [!NOTE] Assumption
+>
+> The question is about how to serve a page with content available in multiple languages, where the content within the page should be displayed in only one consistent language at a time.
 
 Serving a page in different languages is one of the aspects of internationalization (i18n).
 
@@ -12,5 +14,5 @@ To let a search engine know that the same content is available in different lang
 
 ## Rendering
 
-- **Server-side rendering:** The HTML markup will contain string placeholders and content for the specific language will be fetched from configuration in code or a translation service. The server then dynamically generates the HTML page with content in that particular language.
+- **Server-side rendering:** The HTML markup will contain string placeholders, and content for the specific language will be fetched from configuration in code or from a translation service. The server then dynamically generates the HTML page with content in that particular language.
 - **Client-side rendering:** The appropriate locale strings will be fetched and combined with the JavaScript-based views.

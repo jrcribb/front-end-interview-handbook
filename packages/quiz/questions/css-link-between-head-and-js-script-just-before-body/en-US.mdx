@@ -13,12 +13,16 @@ This progressive rendering is a metric that sites are measured on in their perfo
 
 ## Placing `<script>`s just before `</body>`
 
-`<script>` tags block HTML parsing while they are being downloaded and executed which can slow down the display of your page. Placing the `<script>`s at the bottom will allow the HTML to be parsed and displayed to the user first.
+`<script>` tags block HTML parsing while they are being downloaded and executed, which can slow down the display of your page. Placing the `<script>`s at the bottom will allow the HTML to be parsed and displayed to the user first.
 
-An exception for positioning of `<script>`s at the bottom is when your script contains `document.write()`, but these days it's not a good practice to use `document.write()`. Also, placing `<script>`s at the bottom means that the browser cannot start downloading the scripts until the entire document is parsed. This ensures your code that needs to manipulate DOM elements will not throw an error and halt the entire script. If you need to put `<script>`s in the `<head>`, use the `defer` attribute, which will achieve the same effect of running the script only after the HTML is parsed but the browser can kick off the network request earlier to download the script.
+An exception to positioning `<script>`s at the bottom is when your script contains `document.write()`, but these days it's not good practice to use `document.write()`. Also, placing `<script>`s at the bottom means that the browser cannot start downloading the scripts until the entire document is parsed. This ensures that code which needs to manipulate DOM elements will not throw an error and halt the entire script.
 
-Keep in mind that putting scripts just before the closing `</body>` tag will create the illusion that the page loads faster on an empty cache (since the scripts won't block downloading the rest of the document). However, if you have some code you want to run during page load, it will only start executing after the entire page has loaded. If you put those scripts in the `<head>` tag, they would start executing before - so on a primed cache the page would actually appear to load faster.
+> [!TIP] Prefer `defer` over placing `<script>` at the bottom
+>
+> If you need to put `<script>`s in the `<head>`, use the `defer` attribute. It achieves the same effect of running the script only after the HTML is parsed, but the browser can kick off the network request earlier to download the script.
+
+Keep in mind that putting scripts just before the closing `</body>` tag creates the illusion that the page loads faster on an empty cache (since the scripts won't block downloading the rest of the document). However, if you have code you want to run during page load, it will only start executing after the entire page has loaded. If you put those scripts in the `<head>` tag, they would start executing earlier — so on a primed cache, the page would actually appear to load faster.
 
 ## `<head>` and `<body>` tags are now optional
 
-As per the HTML5 specification, certain HTML tags like `<head>` and `<body>` are optional. Google's style guide even recommends removing them to save bytes. However, this practice is still not widely adopted and the performance gain is likely to be minimal and for most sites it's not likely going to matter.
+As per the HTML5 specification, certain HTML tags like `<head>` and `<body>` are optional. Google's style guide even recommends removing them to save bytes. However, this practice is still not widely adopted, and the performance gain is likely minimal — for most sites, it's not going to matter.
